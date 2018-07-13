@@ -8,14 +8,18 @@ struct Time{
   int start, end;
 };
 
+vector <Time> v;
+
 int cmp(const Time &a, const Time &b);
 
-
 int main() {
+
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+
   int N, last = -1;
   int count = 0;
 
-  vector <Time> v;
 
   cin >> N;
 
@@ -24,8 +28,7 @@ int main() {
     Time T;
     int start, end;
     cin >> start >> end;
-    T.start = start;
-    T.end = end;
+    T.start = start; T.end = end;
     v.push_back(T);
   }
 
