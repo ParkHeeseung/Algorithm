@@ -1,71 +1,43 @@
 #include <iostream>
 #include <fstream>
-#include <queue>
 
 using namespace std;
-
-const int MAX_SIZE = 1000;
-int N, W, L, arr[MAX_SIZE];
 
 //N - 다리를 건너는 트럭의 수
 //W - 다리의 길이
 //L - 다리의 최대하중
 
-int Trucks();
+const int MAX_SIZE = 1001;
+int t[MAX_SIZE] = { 0, };
+int q[MAX_SIZE] = { 0, };
 
 int main(){
 
   ifstream inStream;
   inStream.open("input.txt");
-  inStream >> N >> W >> L;
 
-  for(int i = 0; i < N; i++){
-    inStream >> arr[i];
-  }
+  int numTestCases;
+  int n, w, l;
+  inStream >> numTestCases;
 
-  cout << Trucks() << "\n";
+  while(numTestCases --){
 
+    inStream >> n >> w >> l;
 
-  return 0;
-}
-
-int Trucks(){
-
-  int result = W, sum = 0;
-  queue<int> q;
-
-
-  for(int i = 0; i < N; i++){
-
-    int temp = arr[i];
-
-    while(1){
-
-      if(q.empty()){
-        q.push(temp);
-        sum += temp;
-        result ++;
-        break;
-      }
-      else if(q.size() == W){
-        sum -= q.front(); q.pop();
-      }
-      else{
-        if(sum + temp > L){
-          q.push(0);
-          result ++;
-        }
-        else{
-          sum += temp;
-          q.push(temp);
-          result ++;
-          break;
-        }
+    for(int i = 1, j = 1; i <= n; i++) {
+      inStream >> t[i];
+      t[i] += t[i - 1];
+      q[i] = q[i - 1] + 1;
+      while(t[i] - t[j - 1] > l || q[i] - q[j] == w){
+        q[i] = q[j++] + w;
       }
     }
 
+    cout << q[n] + w << endl;
+
   }
 
-  return result;
 
+
+  return 0;
 }
