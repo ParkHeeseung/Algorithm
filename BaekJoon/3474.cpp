@@ -6,6 +6,9 @@ void func(int input);
 
 int main(){
 
+  cin.tie(NULL);
+  ios::sync_with_stdio(false);
+
   int numTestCases;
   cin >> numTestCases;
 
@@ -28,6 +31,6 @@ void func(int input){
 
   }
 
-  cout << result << endl;
+  cout << result << "\n";
 
 }
