@@ -8,12 +8,11 @@ int main(){
   ios::sync_with_stdio(false);
   cin.tie(0);
 
-  register int N, result = 0;
+  long long int N, R;
   cin >> N;
 
-  for(int i = 1, j = 4; i <= N; i++, j += 3) result = (result + j) % 45678;
-
-  cout << result + 1 << endl;
+  R = (1 + N * (8 + (N - 1) * 3) / 2) % 45678;
+  cout <<  R << endl;
 
   return 0;
 }
