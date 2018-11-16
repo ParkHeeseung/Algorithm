@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <cstdio>
+#include <cstring>
 
 using namespace std;
 
@@ -10,15 +12,19 @@ int main(){
   int numTestCases;
   inStream >> numTestCases;
 
-  cout << "hi" << endl;
-
   while(numTestCases --){
 
     int n, k;
     inStream >> n >> k;
 
+    if(inStream.peek()==EOF)break;
+
+
     int arr[n];
-    int queue[k] = { 0, };
+    int queue[k];
+
+    memset(queue, 0, sizeof(queue));
+
 
     for(int i = 0; i < n; i++){
       inStream >> arr[i];
@@ -32,12 +38,7 @@ int main(){
 
       for(int j = 0; j < k; j++){
 
-        if(queue[j] < arr[i]){
-          queue[j] = arr[i];
-          break;
-        }
-
-        else if(queue[j] == 0){
+        if(queue[j] < arr[i] || queue[j] == 0){
           queue[j] = arr[i];
           break;
         }
@@ -50,10 +51,6 @@ int main(){
         if(error) break;
 
       }
-
-      //4 5 6 8 9
-      //1 3 7 10
-      //2
 
     }
 

@@ -8,17 +8,10 @@ using namespace std;
 
 int main(){
 
-  ifstream inStream;
-  inStream.open("input.txt");
-  int numTestCases;
-  inStream >> numTestCases;
-
-  while(numTestCases --){
 
 
     int n, k;
-    inStream >> n >> k;
-    if(inStream.peek() == EOF) break;
+    cin >> n >> k;
 
     int arr[n];
     int queue[k];
@@ -26,7 +19,7 @@ int main(){
     memset(queue, 0, sizeof(queue));
 
     for(int i = 0; i < n; i++){
-      inStream >> arr[i];
+      cin >> arr[i];
     }
 
     bool error = false;
@@ -68,7 +61,6 @@ int main(){
 
 
 
-  }
 
   return 0;
 }
