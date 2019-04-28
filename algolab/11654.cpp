@@ -3,7 +3,7 @@
 
 using namespace std;
 
-const int MAX_SIZE = 101;
+const int MAX_SIZE = 26;
 
 void Func(string str);
 
@@ -13,7 +13,6 @@ int main(){
 
   cin >> str;
 
-
   Func(str);
 
 
@@ -22,9 +21,9 @@ int main(){
 
 void Func(string str){
 
-  int index[26];
+  int index[MAX_SIZE];
 
-  for(int i = 0; i < 26; i++){
+  for(int i = 0; i < MAX_SIZE; i++){
     index[i] = -1;
   }
 
@@ -38,7 +37,7 @@ void Func(string str){
 
   }
 
-  for(int i = 0; i < 26; i++){
+  for(int i = 0; i < MAX_SIZE; i++){
     cout << index[i] << " ";
   }
 
