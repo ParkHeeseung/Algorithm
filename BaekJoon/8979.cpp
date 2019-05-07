@@ -23,7 +23,7 @@ int main(){
 
   for (int i = 0; i < N; i++){
     if (medal[i].first.first == K){
-      cout << i + 1;
+      cout << i + 1 << endl;
       break;
 
     }
@@ -34,12 +34,19 @@ int main(){
 
 bool cmp(pair< pair<int, int>, pair<int, int> > a, pair< pair<int, int>, pair<int, int> > b){
 
-  if (a.first.second > b.first.second) return true;
+  if (a.first.second > b.first.second){
+    return true;
+  }
   else if (a.first.second == b.first.second){
-    if (a.second.first > b.second.first) return true;
-      else if (a.second.first == b.second.first)
-        if (a.second.second > b.second.second) return true;
-        else if(a.first.first == K) return true;
+    if (a.second.first > b.second.first){
+      return true;
+    }
+    else if (a.second.first == b.second.first){
+      if (a.second.second > b.second.second){
+        return true;
+      }
+      else if(a.first.first == K) return true;
+    }
   }
 
   return false;
