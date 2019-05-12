@@ -1,5 +1,7 @@
 #include <iostream>
-#include <cstring>
+#include <string>
+#include <cstdio>
+#include <stack>
 
 using namespace std;
 
@@ -11,34 +13,49 @@ int main(){
   int N;
   cin >> N;
 
-  int strSize = str.size();
-  int pointer = str.size();
+  stack <char> s1,s2;
 
-  for(int i = 0; i < N; i++){
-    string cmd;
-    cin >> cmd;
-
-    if(cmd == "L" && pointer != 0){
-      pointer --;
-    }
-    else if(cmd == "D" && pointer != strSize){
-      pointer ++;
-    }
-    else if(cmd == "B" && pointer != 0){
-      str.erase(pointer - 1, 1);
-      strSize--;
-      pointer--;
-    }
-    else if(cmd == "P"){
-      cin >> cmd;
-      str.insert(pointer, cmd);
-      strSize++;
-      pointer++;
-    }
+  for(int i = 0; i < str.size(); i++){
+    s1.push(str.at(i));
   }
 
-  cout << str << endl;
+  for(int i = 0; i < N; i++){
 
-  return 0;
+    char cmd;
+    scanf("%s", &cmd);
 
+    if(cmd == 'L'){
+      if(!(s1.empty())){
+        s2.push(s1.top());
+        s1.pop();
+      }
+    }
+    else if(cmd == 'D'){
+      if(!s2.empty()){
+        s1.push(s2.top());
+        s2.pop();
+      }
+    }
+    else if(cmd == 'B'){
+      if(!(s1.empty())){
+        s1.pop();
+      }
+    }
+    else if(cmd == 'P'){
+      scanf("%s", &cmd);
+      s1.push(cmd);
+      }
+    }
+
+    while(!(s1.empty())){
+        s2.push(s1.top());
+        s1.pop();
+    }
+    while(!(s2.empty())){
+        cout << s2.top();
+        s2.pop();
+    }
+    cout << endl;
+
+    return 0;
 }
