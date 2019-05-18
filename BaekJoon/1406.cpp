@@ -7,6 +7,9 @@ using namespace std;
 
 int main(){
 
+  cin.tie(0);
+  ios::sync_with_stdio(false);
+
   string str;
   cin >> str;
 
@@ -22,8 +25,7 @@ int main(){
   for(int i = 0; i < N; i++){
 
     char cmd;
-    scanf("%s", &cmd);
-
+    cin >> cmd;
     if(cmd == 'L'){
       if(!(s1.empty())){
         s2.push(s1.top());
@@ -42,7 +44,7 @@ int main(){
       }
     }
     else if(cmd == 'P'){
-      scanf("%s", &cmd);
+      cin >> cmd;
       s1.push(cmd);
       }
     }
