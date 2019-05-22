@@ -31,6 +31,9 @@ int main(){
   sort(vec.begin(), vec.end(), cmp);
 
   for(int i = 0; i < N; i++){
+    if(i < N - 1 && vec.at(i) == vec.at(i + 1)){
+      continue;
+    }
     cout << vec.at(i) << endl;
   }
 
