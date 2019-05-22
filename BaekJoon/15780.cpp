@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-const int num[] = {0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4};
+const int num[] = {0, 0, 0, 2, 2, 3, 3, 4, 4};
 
 int main()
 {
@@ -19,11 +19,11 @@ int main()
         sum += num[A];
     }
 
-    if(N > sum){
-      cout << "NO";
+    if(N <= sum){
+      cout << "YES";
     }
     else{
-      cout << "YES";
+      cout << "NO";
     }
 
     return 0;
