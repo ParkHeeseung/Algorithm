@@ -1,43 +1,51 @@
-#include <iostream>
+#include <stdio.h>
 
-using namespace std;
-
-const int MAX_SIZE = 8;
+//ascending인지, descending인지, 아니면 mixed
 
 int main(){
 
-  int arr[MAX_SIZE];
 
-  for(int i = 0; i < MAX_SIZE; i++){
-    cin >> arr[i];
-  }
 
-  switch (arr[0]) {
-    case 1:
-      for(int i = 1; i < MAX_SIZE; i++){
-        if(arr[i] == i) continue;
-        else {
-          cout << "mixed" << endl;
-          return 0;
-        }
-        cout << "ascending" << endl;
-        return 0;
-      }
-    case 8:
-      for(int i = MAX_SIZE - 1; i >= 0; i--){
-        if(arr[i] == i) continue;
-        else {
-          cout << "mixed" << endl;
-          return 0;
-        }
-        cout << "descending" << endl;
-        return 0;
-      }
-    default : cout << "mixed" << endl;
-
-  }
+	int arr[8], a = 0, d = 0, m = 0, i;
 
 
 
-  return 0;
+	for(i = 0; i < 8; i++){
+
+
+
+		scanf("%d", &arr[i]);
+
+
+
+		if(i + 1 == arr[i])
+
+			a++;
+
+
+
+		else if (8 - i == arr[i])
+
+			d++;
+
+	}
+
+
+
+	if(a == 8)
+
+		printf("ascending");
+
+
+
+	else if (d == 8)
+
+		printf("descending");
+
+
+
+	else
+
+		printf("mixed");
+
 }
