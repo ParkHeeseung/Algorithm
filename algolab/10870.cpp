@@ -10,8 +10,6 @@ int main() {
 
   cout << func(n) << endl;
 
-
-  
 }
 
 int func(int n) {
