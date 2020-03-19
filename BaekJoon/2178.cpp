@@ -14,12 +14,10 @@ int mark[MAX_SIZE][MAX_SIZE] = { 0, };
 struct point{
   int x;
   int y;
-  int z;
+  int distance;
 };
 
 int bfs(int N, int M);
-
-
 
 int main() {
 
@@ -42,7 +40,7 @@ int bfs(int N, int M){
 
   queue <point> q;
   point p;
-  p.x = 0; p.y = 0; p.z = 1;
+  p.x = 0; p.y = 0; p.distance = 1;
 
   q.push(p);
   mark[0][0] = 1;
@@ -51,11 +49,11 @@ int bfs(int N, int M){
 
     int x = q.front().x;
     int y = q.front().y;
-    int z = q.front().z;
+    int distance = q.front().distance;
+
+    if(x == M - 1 && y == N - 1) return distance;
 
     q.pop();
-
-    if(x == M - 1 && y == N - 1) return z;
 
     for(int i = 0; i < 4; i++) {
       int nx = x + dx[i];
@@ -63,7 +61,7 @@ int bfs(int N, int M){
 
       if(nx < 0 || ny < 0 || nx >= M || ny >= N || mark[ny][nx] == 1 || map[ny][nx] != '1') continue;
 
-      p.x = nx; p.y = ny; p.z = z+1;
+      p.x = nx; p.y = ny; p.distance = distance + 1;
 
       q.push(p);
       mark[ny][nx] = 1;
